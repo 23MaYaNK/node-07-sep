@@ -7,7 +7,7 @@ const fs=require('fs');
 
 
 //http://localhost:3000/users/:10
-app.get('/users/:id',(req,res)=>{
+app.get('/user/:id',(req,res)=>{
     let id=req.params.id;
     let user=users.find((user)=>user.id ===parseInt(id))
     console.log(user)
@@ -17,7 +17,7 @@ app.get('/users/:id',(req,res)=>{
 // http://localhost:3000/add/user
 app.post('/add/user',(req,res)=>{
     console.log(req.body);
-    req.body.id=31;
+    req.body.id=users.length+1;
     users.push(req.body);
     fs.writeFile('users.json',JSON.stringify(users),(err)=>{
         if(err){
